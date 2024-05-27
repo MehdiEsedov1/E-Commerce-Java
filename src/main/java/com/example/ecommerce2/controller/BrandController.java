@@ -21,7 +21,7 @@ public class BrandController {
 
     @PostMapping("/postBrand")
     void postBrand(@RequestBody BrandRequest brandRequest){
-        brandService.postBrand();
+        brandService.postBrand(brandRequest);
     }
 
     @GetMapping("/getBrandById/{id}")
@@ -31,6 +31,6 @@ public class BrandController {
 
     @PutMapping("/updateBrand/{id}")
     void updateBrandById(@PathVariable Long id,@RequestBody BrandRequest brandRequest){
-        brandService.updateBrand(id,brandRequest);
+        brandService.updateBrandById(id,brandRequest);
     }
 }
