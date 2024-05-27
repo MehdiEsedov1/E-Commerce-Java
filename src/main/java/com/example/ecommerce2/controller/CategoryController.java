@@ -12,25 +12,25 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/category")
 public class CategoryController {
-    private final CategoryService categoryService;
-
-    @GetMapping("/getCategories")
-    List<CategoryResponse> getAllCategories() {
-        return categoryService.getAllCategories();
-    }
-
-    @PostMapping("/postCategory")
-    void postCategory(@RequestBody CategoryRequest categoryRequest) {
-        categoryService.postCategory(categoryRequest);
-    }
-
-    @GetMapping("/getCategoryById/{id}")
-    CategoryResponse getCategoryById(@PathVariable Long id) {
-        return categoryService.getCategoryById(id);
-    }
-
-    @PutMapping("updateCategory/{id}")
-    void updateCategory(@RequestBody CategoryRequest categoryRequest,@PathVariable Long id){
-        categoryService.updateCategory(categoryRequest,id);
-    }
+//    private final CategoryService categoryService;
+//
+//    @GetMapping("/getCategories")
+//    List<CategoryResponse> getAllCategories() {
+//        return categoryService.getAllCategories();
+//    }
+//
+//    @PostMapping("/postCategory")
+//    void postCategory(@RequestBody CategoryRequest categoryRequest) {
+//        categoryService.postCategory(categoryRequest);
+//    }
+//
+//    @GetMapping("/getCategoryById/{id}")
+//    CategoryResponse getCategoryById(@PathVariable Long id) {
+//        return categoryService.getCategoryById(id);
+//    }
+//
+//    @PutMapping("updateCategory/{id}")
+//    void updateCategory(@RequestBody CategoryRequest categoryRequest,@PathVariable Long id){
+//        categoryService.updateCategory(categoryRequest,id);
+//    }
 }
