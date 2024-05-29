@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ECommerce2Application {
     public static void main(String[] args) {
         SpringApplication.run(ECommerce2Application.class, args);
-        System.out.println("TestLast");
-        System.out.println("TestLast");
+        System.out.println("Last");
     }
 }
