@@ -8,5 +8,6 @@ public class ECommerce2Application {
     public static void main(String[] args) {
         SpringApplication.run(ECommerce2Application.class, args);
         System.out.println("Origin test");
+        System.out.println("Origin test");
     }
 }
