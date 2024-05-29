@@ -9,5 +9,6 @@ public class ECommerce2Application {
         SpringApplication.run(ECommerce2Application.class, args);
         System.out.println("Origin test");
         System.out.println("Origin test");
+        System.out.println("Origin test");
     }
 }
