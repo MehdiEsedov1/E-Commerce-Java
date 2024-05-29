@@ -3,6 +3,7 @@ package com.example.ecommerce2.controller;
 import com.example.ecommerce2.model.dto.request.CategoryRequest;
 import com.example.ecommerce2.model.dto.response.CategoryResponse;
 import com.example.ecommerce2.service.impl.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class CategoryController {
     }
 
     @PostMapping("/postCategory")
-    void postCategory(@RequestBody CategoryRequest categoryRequest) {
+    void postCategory(@RequestBody @Valid CategoryRequest categoryRequest) {
         categoryService.postCategory(categoryRequest);
     }
 

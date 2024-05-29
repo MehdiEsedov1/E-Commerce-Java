@@ -3,6 +3,7 @@ package com.example.ecommerce2.controller;
 import com.example.ecommerce2.model.dto.request.BrandRequest;
 import com.example.ecommerce2.model.dto.response.BrandResponse;
 import com.example.ecommerce2.service.impl.BrandService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class BrandController {
     }
 
     @PostMapping("/postBrand")
-    void postBrand(@RequestBody BrandRequest brandRequest){
+    void postBrand(@RequestBody @Valid BrandRequest brandRequest){
         brandService.postBrand(brandRequest);
     }
 
