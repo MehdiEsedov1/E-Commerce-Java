@@ -4,6 +4,8 @@ import com.example.ecommerce2.mapper.CategoryMapper;
 import com.example.ecommerce2.model.dto.request.CategoryRequest;
 import com.example.ecommerce2.model.dto.response.CategoryResponse;
 import com.example.ecommerce2.model.entity.Category;
+import com.example.ecommerce2.model.enums.Exceptions;
+import com.example.ecommerce2.model.exceptions.ApplicationException;
 import com.example.ecommerce2.repository.CategoryRepo;
 import com.example.ecommerce2.service.impl.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -33,12 +35,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponse getCategoryById(Long id) {
-        return mapper.map(categoryRepo.findById(id).orElseThrow());
+        return mapper.map(categoryRepo.findById(id).orElseThrow(() -> new ApplicationException(Exceptions.CATEGORY_NOT_FOUND)));
     }
 
     @Override
     public void updateCategory(CategoryRequest categoryRequest, Long id) {
-        Category category = categoryRepo.findById(id).orElseThrow();
+        Category category = categoryRepo.findById(id).orElseThrow(() -> new ApplicationException(Exceptions.CATEGORY_NOT_FOUND));
         category.setDescription(categoryRequest.getDescription());
         category.setName(categoryRequest.getName());
         categoryRepo.save(category);

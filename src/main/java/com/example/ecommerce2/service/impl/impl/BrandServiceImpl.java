@@ -4,6 +4,8 @@ import com.example.ecommerce2.mapper.BrandMapper;
 import com.example.ecommerce2.model.dto.request.BrandRequest;
 import com.example.ecommerce2.model.dto.response.BrandResponse;
 import com.example.ecommerce2.model.entity.Brand;
+import com.example.ecommerce2.model.enums.Exceptions;
+import com.example.ecommerce2.model.exceptions.ApplicationException;
 import com.example.ecommerce2.repository.BrandRepo;
 import com.example.ecommerce2.service.impl.BrandService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 public class BrandServiceImpl implements BrandService {
     private final BrandRepo brandRepo;
     private final BrandMapper brandMapper;
+
     @Override
     public List<BrandResponse> getBrands() {
         List<Brand> brandList = brandRepo.findAll();
@@ -34,12 +37,13 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public BrandResponse getBrandById(Long id) {
-        return brandMapper.mapper(brandRepo.findById(id).orElseThrow());
+        return brandMapper.mapper(brandRepo.findById(id)
+                .orElseThrow(() -> new ApplicationException(Exceptions.BRAND_NOT_FOUND)));
     }
 
     @Override
     public void updateBrandById(Long id, BrandRequest brandRequest) {
-        Brand brand = brandRepo.findById(id).orElseThrow();
+        Brand brand = brandRepo.findById(id).orElseThrow(() -> new ApplicationException(Exceptions.BRAND_NOT_FOUND));
         brand.setDescription(brandRequest.getDescription());
         brand.setName(brand.getName());
         brandRepo.save(brand);

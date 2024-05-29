@@ -3,6 +3,7 @@ package com.example.ecommerce2.controller;
 import com.example.ecommerce2.model.dto.request.ProductRequest;
 import com.example.ecommerce2.model.dto.response.ProductResponse;
 import com.example.ecommerce2.service.impl.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping("/postProduct")
-    void postProduct(@RequestBody ProductRequest productRequest) {
+    void postProduct(@RequestBody @Valid ProductRequest productRequest) {
         productService.postProduct(productRequest);
     }
 

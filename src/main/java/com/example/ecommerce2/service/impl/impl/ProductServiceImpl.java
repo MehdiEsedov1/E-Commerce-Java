@@ -4,6 +4,8 @@ import com.example.ecommerce2.mapper.ProductMapper;
 import com.example.ecommerce2.model.dto.request.ProductRequest;
 import com.example.ecommerce2.model.dto.response.ProductResponse;
 import com.example.ecommerce2.model.entity.Product;
+import com.example.ecommerce2.model.enums.Exceptions;
+import com.example.ecommerce2.model.exceptions.ApplicationException;
 import com.example.ecommerce2.repository.ProductRepo;
 import com.example.ecommerce2.service.impl.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -33,12 +35,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse getProductById(Long id) {
-        return mapper.map(productRepo.findById(id).orElseThrow());
+        return mapper.map(productRepo.findById(id).orElseThrow(() -> new ApplicationException(Exceptions.PRODUCT_NOT_FOUND)));
     }
 
     @Override
     public void updateProduct(Long id, ProductRequest productRequest) {
-        Product product = productRepo.findById(id).orElseThrow();
+        Product product = productRepo.findById(id).orElseThrow(() -> new ApplicationException(Exceptions.PRODUCT_NOT_FOUND));
 
         product.setProductDetails(productRequest.getProductDetails());
         product.setName(productRequest.getName());
