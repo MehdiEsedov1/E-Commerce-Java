@@ -1,9 +1,6 @@
 package com.example.ecommerce2.model.dto.request;
 
 import com.example.ecommerce2.model.entity.Product;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,9 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class CartRequest {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
     int count;
     int total_amount;
     @OneToMany

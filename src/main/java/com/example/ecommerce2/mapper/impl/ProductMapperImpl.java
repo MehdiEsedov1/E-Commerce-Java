@@ -28,7 +28,6 @@ public class ProductMapperImpl implements ProductMapper {
                 .productDetails(productRequest.getProductDetails())
                 .amount(productRequest.getAmount())
                 .remainCount(productRequest.getRemainCount())
-                .id(productRequest.getId())
                 .build();
     }
 }

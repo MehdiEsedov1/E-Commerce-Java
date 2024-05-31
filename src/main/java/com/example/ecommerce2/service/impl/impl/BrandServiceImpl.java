@@ -1,5 +1,6 @@
 package com.example.ecommerce2.service.impl.impl;
 
+import com.example.ecommerce2.mail.EmailService;
 import com.example.ecommerce2.mapper.BrandMapper;
 import com.example.ecommerce2.model.dto.request.BrandRequest;
 import com.example.ecommerce2.model.dto.response.BrandResponse;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 public class BrandServiceImpl implements BrandService {
     private final BrandRepo brandRepo;
     private final BrandMapper brandMapper;
+    public final EmailService emailService;
 
     @Override
     public List<BrandResponse> getBrands() {
@@ -33,6 +35,8 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public void postBrand(BrandRequest brandRequest) {
         brandRepo.save(brandMapper.mapper(brandRequest));
+        emailService.sendSimpleMessage("mehdiesedof@gmail.com", "Huseyn geydi", "And olsun Tengri ki,Huseyn geydi");
+        emailService.sendMessageWithAttachment("mehdiesedof@gmail.com", "Huseyn geydi", "<h1>Merhaba!</h1><p>Bu bir HTML formatında e-posta örneğidir.</p>");
     }
 
     @Override

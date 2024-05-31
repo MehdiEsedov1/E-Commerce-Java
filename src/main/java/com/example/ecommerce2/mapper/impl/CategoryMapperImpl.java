@@ -22,7 +22,6 @@ public class CategoryMapperImpl implements CategoryMapper {
         return Category.builder()
                 .name(categoryRequest.getName())
                 .description(categoryRequest.getDescription())
-                .id(categoryRequest.getId())
                 .build();
     }
 }

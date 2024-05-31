@@ -22,7 +22,6 @@ public class BrandMapperImpl implements BrandMapper {
         return Brand.builder()
                 .name(brandRequest.getName())
                 .description(brandRequest.getDescription())
-                .id(brandRequest.getId())
                 .build();
     }
 }
