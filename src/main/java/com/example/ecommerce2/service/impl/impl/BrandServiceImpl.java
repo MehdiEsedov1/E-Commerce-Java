@@ -36,7 +36,7 @@ public class BrandServiceImpl implements BrandService {
     public void postBrand(BrandRequest brandRequest) {
         brandRepo.save(brandMapper.mapper(brandRequest));
         emailService.sendSimpleMessage("mehdiesedof@gmail.com", "Test text", "Test text text");
-        emailService.sendMessageWithAttachment("mehdiesedof@gmail.com", "Test text", "<h1>Merhaba!</h1><p>Bu bir HTML formatında e-posta örneğidir.</p>");
+        emailService.sendMessageWithAttachment("mehdiesedof@gmail.com", "Test text", "<h1>Merhaba!</h1><h2>test</h2>");
     }
 
     @Override
